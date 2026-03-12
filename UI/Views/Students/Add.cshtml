@@ -19,27 +19,28 @@
     
     }
     
-    <form method="post" asp-controller="Students" asp-action="AddStd">
+    <form method="post" id="add-std-form" asp-controller="Students" asp-action="AddStd">
 
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
                     First Name
-                    <input asp-for=FirstName class="form-control" />
+                    <input name="firstName" asp-for=FirstName class=" form  form-control" />
                 </div>
+               
 
                 <div class="col-md-4">
                     Last Name
-                    <input asp-for=LastName class="form-control" />
+                    <input name="LastName" asp-for=LastName class=" form  form-control" />
                 </div>
                 <div class="col-md-4">
                     Social Number
-                    <input type="text" asp-for=NationalId class="form-control" maxlength="10" minlength="10" pattern="\d{10}" />
+                    <input name="national" type="text" asp-for=NationalId class=" form  form-control" maxlength="10" minlength="10" pattern="\d{10}" />
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-md-4">
+                <div name="gender" class="  form  col-md-4">
                     Gender
                     <select asp-for=Gender class="form-select">
                         <option value="true">Male</option>
@@ -47,9 +48,9 @@
                     </select>
                 </div>
 
-                <div class="col-md-4">
+                <div class="  form  col-md-4">
                     Birth Place
-                    <select asp-for=Governorate class="form-select" asp-items="@(new SelectList(ViewBag.Governorates,"Id","Name"))">
+                    <select name="birthPlace" asp-for=Governorate class=" form  form-select" asp-items="@(new SelectList(ViewBag.Governorates, "Id", "Name"))">
                         <option value="null">Select a place</option>
                        
                     </select>
@@ -57,7 +58,7 @@
 
                 <div class="col-md-4">
                     Birth Date
-                    <input asp-for=BirthDate class="form-control" type="date" />
+                    <input name="birthDate" asp-for=BirthDate class=" form  form-control" type="date" />
                 </div>
 
             </div>
@@ -67,7 +68,7 @@
               <div class="col-md-4">
                   <input type="submit" class="btn btn-outline-info" />
 
-                  <a class="btn btn-outline-danger">Cancel</a>
+                  <a asp-action="Index" class="btn btn-outline-danger">Cancel</a>
 
               </div>
           </div>
@@ -75,6 +76,45 @@
 
         </div>
     </form>
+    <script>
+        document.addEventListener('DOMContentLoaded',function(){
+           
+            
+           let form =document.getElementById("add-std-form");
+           let inputs=document.querySelectorAll(".form");
+           form.addEventListener('submit',function(e){
+           e.preventDefault()
+           validateInputs()
+           }
+           );
+
+          function validateInputs(){
+               
+               inputs.forEach(input=>{
+                   
+                   if(input.value==''){
+                     console.log(input.name+"is Empty")
+                   
+                   }
+                   else{
+                        console.log(input.name+"is Filled")
+                   
+                   
+                   }
+               
+               
+               })
+           
+           
+           };
+
+           
+        
+        
+        
+        });
+    
+    </script>
  
 
 
