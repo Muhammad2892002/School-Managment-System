@@ -111,7 +111,7 @@ namespace UI.Controllers
                 var jsonString = JsonConvert.SerializeObject(studentDTO);
 
 
-                var response = await client.PostAsync("https://localhost:7205/api/students/add", new StringContent(jsonString, Encoding.UTF8, "application/json"));
+                var response = await client.PostAsync("https://localhost:7205/api/students/Add", new StringContent(jsonString, Encoding.UTF8, "application/json"));
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     TempData.Clear();
