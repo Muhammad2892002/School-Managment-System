@@ -35,7 +35,7 @@ namespace API.Controllers
                                 LastName = student.LastName,
                                 BirthDate = student.BirthDate,
                                 CreateDate = student.CreateDate,
-                                UpdateDate = student.UpdateDate,
+                              
                                 Governorate = student.Governorate,
                                 GovernorateName = student.GovernorateObj.Name,
                                 NationalId = student.NationalId,
@@ -115,7 +115,7 @@ namespace API.Controllers
                     Gender = studentDTO.Gender,
                     Governorate = studentDTO.Governorate,
                     CreateDate = DateTime.Now,
-                    UpdateDate = null,
+                  
                     NationalId = studentDTO.NationalId,
 
 
@@ -147,7 +147,7 @@ namespace API.Controllers
         }
 
    
-        public IActionResult UpdateStd([FromBody]StudentDTO studentDTO)
+        public IActionResult Std([FromBody]StudentDTO studentDTO)
         {
             List<string> errorMsg = new List<string>();
             var age = DateTime.Now.Year - studentDTO.BirthDate.Year;
