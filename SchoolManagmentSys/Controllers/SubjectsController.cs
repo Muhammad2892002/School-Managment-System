@@ -20,20 +20,20 @@ namespace API.Controllers
         public IActionResult GetAllSubjects() {
 
             var subjects = (from obj in _subjectRepository.GetAll()
-                            select new SubjectDTO { 
-                                Id= obj.Id,
-                                Name=obj.Name,
-                                
-                            
+                            select new SubjectDTO {
+                                Id = obj.Id,
+                                Name = obj.Name,
+
+
                             }).ToList();
-            var subjectAsJson=JsonConvert.SerializeObject(subjects,Formatting.None,new JsonSerializerSettings {
-             ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            var subjectAsJson = JsonConvert.SerializeObject(subjects, Formatting.None, new JsonSerializerSettings {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             });
             return Ok(subjectAsJson);
         }
 
         public IActionResult Add(SubjectDTO subjectDTO) {
-            var subjectExist = _subjectRepository.Find(x=>x.Name.ToUpper().Contains(subjectDTO.Name.ToUpper())).Any();
+            var subjectExist = _subjectRepository.Find(x => x.Name.ToUpper().Contains(subjectDTO.Name.ToUpper())).Any();
             if (subjectExist)
             {
                 return Conflict("Subject Already Exist");
@@ -48,20 +48,31 @@ namespace API.Controllers
                 _subjectRepository.Add(subject);
                 return Ok("Subject added");
             }
-             
-            
-           
-            
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
         }
+       
 
         public IActionResult FindSubject(int id) {
             var isSubjectExist = _subjectRepository.Find(x => x.Id == id).FirstOrDefault();
-            return Ok(isSubjectExist);
+            if (isSubjectExist != null)
+            {
+                return Ok(isSubjectExist);
+            }
+            else { 
+                return NotFound("Subject Not Found");
+
+
+
+            }
+           
 
 
 
@@ -93,10 +104,16 @@ namespace API.Controllers
 
         public IActionResult Delete(int id) {
             var subjects = _subjectRepository.Find(x => x.Id == id).FirstOrDefault();
-            _subjectRepository.Delete(subjects);
-            return Ok("Deleted Success");
-        
-        
+            //if (subjects != null) {
+            //    /*var checkStd = _subjectRepository.Find(x => x.Id == id, x => x.StudentSubjects.FirstOrDefault()*/);
+            //    _subjectRepository.Delete(subjects);
+            //return Ok("Deleted Success");
+            //}
+            return NotFound("Subject Not Found");
+
+
+
+
         }
 
 

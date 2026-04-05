@@ -1,6 +1,7 @@
 ﻿using Infrastructure.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -114,7 +115,14 @@ namespace UI.Controllers
         public async Task<IActionResult> Delete(long Id)
         {
             HttpClient client = new HttpClient();
-           
+            var findSub=await client.GetAsync("https://localhost:7205/api/subjects/FindSubject?id=" + Id);
+            if (findSub.StatusCode == System.Net.HttpStatusCode.NotFound) {
+                return RedirectToAction("Index");
+
+            }
+                  
+                    
+
             var response = await client.DeleteAsync("https://localhost:7205/api/subjects/Delete?id=" + Id);
 
             return RedirectToAction("Index");

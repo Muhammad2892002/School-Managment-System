@@ -264,6 +264,7 @@ namespace UI.Controllers
         public async Task<IActionResult> Delete(long Id) {
             HttpClient client = new HttpClient();
             // var response = client.DeleteAsync("https://localhost:7205/api/students/Delete/");
+            //var isUserCheck= await client.
             var response = await client.DeleteAsync("https://localhost:7205/api/students/Delete?id="+Id);
             if (response.StatusCode == System.Net.HttpStatusCode.OK) {
                
