@@ -9,5 +9,6 @@ namespace Repositories.IRepositoryFolder
 {
     public interface ISubjectRepository :IRepository<Subject>
     {
+       
     }
 }

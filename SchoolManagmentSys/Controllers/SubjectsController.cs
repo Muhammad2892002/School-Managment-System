@@ -13,9 +13,11 @@ namespace API.Controllers
     public class SubjectsController : ControllerBase
     {
         private readonly ISubjectRepository _subjectRepository;
-        public SubjectsController(ISubjectRepository subjectRepository)
+        private readonly IStudentSubjectRepository _studentSubjectRepository;
+        public SubjectsController(ISubjectRepository subjectRepository, IStudentSubjectRepository studentSubjectRepository)
         {
             _subjectRepository = subjectRepository;
+            _studentSubjectRepository = studentSubjectRepository;
         }
         public IActionResult GetAllSubjects() {
 
@@ -104,11 +106,16 @@ namespace API.Controllers
 
         public IActionResult Delete(int id) {
             var subjects = _subjectRepository.Find(x => x.Id == id).FirstOrDefault();
-            //if (subjects != null) {
-            //    /*var checkStd = _subjectRepository.Find(x => x.Id == id, x => x.StudentSubjects.FirstOrDefault()*/);
-            //    _subjectRepository.Delete(subjects);
-            //return Ok("Deleted Success");
-            //}
+            if (subjects != null)
+            {
+                var checkIfStudentExistInSubject = _studentSubjectRepository.isThereAnyStudentInSubject(id);
+                if (checkIfStudentExistInSubject) {
+                    return BadRequest("Can't Delete Subject Because There Are Students Enrolled In It");
+
+                }
+                _subjectRepository.Delete(subjects);
+                return Ok("Deleted Success");
+            }
             return NotFound("Subject Not Found");
 
 

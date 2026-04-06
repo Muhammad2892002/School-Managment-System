@@ -124,6 +124,13 @@ namespace UI.Controllers
                     
 
             var response = await client.DeleteAsync("https://localhost:7205/api/subjects/Delete?id=" + Id);
+            if (response.StatusCode==System.Net.HttpStatusCode.BadRequest) {
+                TempData["FailedFlag"] = true;
+                TempData["FailedMsg"]=response.Content.ReadAsStringAsync().Result;
+
+
+
+            }
 
             return RedirectToAction("Index");
 

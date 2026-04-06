@@ -12,8 +12,8 @@ namespace Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private readonly SchoolMsContext _context;
-        private DbSet<TEntity> dbset;
+        protected readonly SchoolMsContext _context;
+        protected DbSet<TEntity> dbset;
 
         public Repository()
         {

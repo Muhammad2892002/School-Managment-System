@@ -10,5 +10,6 @@ namespace Repositories.IRepositoryFolder
 {
     public interface IStudentSubjectRepository :IRepository<StudentSubject>
     {
+        public bool isThereAnyStudentInSubject(int subjectId);
     }
 }

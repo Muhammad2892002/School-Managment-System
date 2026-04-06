@@ -1,4 +1,6 @@
-﻿using DomainEntities.DBEntities;
+﻿using DomainEntities;
+using DomainEntities.DBEntities;
+using Microsoft.EntityFrameworkCore;
 using Repositories.IRepositoryFolder;
 using System;
 using System.Collections.Generic;
@@ -10,8 +12,15 @@ namespace Repositories.RepositoryFolder
 {
     public class SubjectRepository :Repository<Subject>,ISubjectRepository
     {
-        public SubjectRepository()
+       
+
+        public SubjectRepository() 
         {
+          
+
+
         }
+
+    
     }
 }

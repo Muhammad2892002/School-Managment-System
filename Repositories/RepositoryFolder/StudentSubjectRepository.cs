@@ -11,5 +11,11 @@ namespace Repositories.RepositoryFolder
     public class StudentSubjectRepository :Repository<StudentSubject>,IStudentSubjectRepository
     {
         public StudentSubjectRepository() { }
+        public bool isThereAnyStudentInSubject(int subjectId)
+        {
+            var checkIfStudentExistInSubject = _context.StudentSubjects.Where(x => x.SubjectId == subjectId).Any();
+            return checkIfStudentExistInSubject;
+
+        }
     }
 }
