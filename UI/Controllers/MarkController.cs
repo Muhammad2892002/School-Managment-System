@@ -32,7 +32,7 @@ namespace UI.Controllers
         }
         [HttpPost]
 
-        public async Task<IActionResult> AddMarks(EditMarkDTO markDTO) {
+        public async Task<IActionResult> AddMarks(MarkDTO markDTO) {
             HttpClient client = new HttpClient();
             var markAsJson = JsonConvert.SerializeObject(markDTO);
             var response = await client.PostAsync("https://localhost:7205/api/mark/AddMark", new StringContent(markAsJson, Encoding.UTF8, "application/json"));

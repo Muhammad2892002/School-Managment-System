@@ -54,11 +54,11 @@
                     <td>@stdsubs.StdName</td>
                     <td hidden class="tdGrade">@stdsubs.MarkValue</td>
                     <td hidden class="tdActions">
-                        @if (stdsubs.MarkValue > 0)
+                        @if (stdsubs.MarkValue != null)
                         {
                             <a asp-controller="StudentSubject" asp-action="EditMarkToSub" asp-route-stdId="@stdsubs.StudentId" asp-route-subId="@stdsubs.SubjectId">ChangeGrade</a>
                         }
-                        else if (stdsubs.MarkValue == 0)
+                        else if (stdsubs.MarkValue == null)
                         {
                             <a asp-controller="StudentSubject" asp-action="AddMarkToSub" asp-route-stdId="@stdsubs.StudentId" asp-route-subId="@stdsubs.SubjectId">AddGrade</a>
                             
@@ -72,7 +72,7 @@
 
     <script>
             new DataTable('#example', {
-            layout: {
+            layoutioo: {
                 topStart: {
                     buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5']
                 }
@@ -111,6 +111,7 @@
             document.querySelectorAll(".tdActions").forEach(td => td.hidden = !show);
         }
     </script>
+    
 
 
 

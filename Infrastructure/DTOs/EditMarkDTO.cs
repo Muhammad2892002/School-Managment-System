@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +15,9 @@ namespace Infrastructure.DTOs
 
         public int SubjectId { get; set; }
 
-        public decimal? OldMark { get; set; } = 0;
-        public decimal? NewMark { get; set; } = 0;
+        public decimal? OldMark { get; set; } = null;
+        [Required(ErrorMessage ="Enter valid mark or press cancel")]
+        public decimal? NewMark { get; set; } = null;
 
 
 

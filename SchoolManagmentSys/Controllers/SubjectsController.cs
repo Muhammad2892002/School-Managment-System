@@ -110,7 +110,7 @@ namespace API.Controllers
             {
                 var checkIfStudentExistInSubject = _studentSubjectRepository.isThereAnyStudentInSubject(id);
                 if (checkIfStudentExistInSubject) {
-                    return BadRequest("Can't Delete Subject Because There Are Students Enrolled In It");
+                    return BadRequest("Cannot Delete Subject Because There Are Students Enrolled In It");
 
                 }
                 _subjectRepository.Delete(subjects);

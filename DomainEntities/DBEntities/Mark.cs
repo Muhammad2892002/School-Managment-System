@@ -9,7 +9,7 @@ public partial class Mark
 
     public int SubjectId { get; set; }
 
-    public decimal? Mark1 { get; set; }
+    public decimal? Mark1 { get; set; } = null;
 
     public virtual Student Student { get; set; } = null!;
 

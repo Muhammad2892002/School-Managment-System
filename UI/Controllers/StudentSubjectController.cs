@@ -22,7 +22,7 @@ namespace UI.Controllers
         {
             HttpClient client = new HttpClient();
             var response = await client.GetAsync($"https://localhost:7205/api/studentsubject/GetStdAndSub?stdId={stdId}&subId={subId}");
-            var stdAndSubs = JsonConvert.DeserializeObject<EditMarkDTO>(await response.Content.ReadAsStringAsync());
+            var stdAndSubs = JsonConvert.DeserializeObject<MarkDTO>(await response.Content.ReadAsStringAsync());
 
             return View(stdAndSubs);
         }

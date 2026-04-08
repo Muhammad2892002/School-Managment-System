@@ -1,4 +1,4 @@
-﻿@model Infrastructure.DTOs.EditMarkDTO;
+﻿@model Infrastructure.DTOs.MarkDTO;
 <form method="post" asp-controller="mark" asp-action="AddMarks">
     <div class="container">
         <div class="row">
@@ -25,7 +25,7 @@
             </div>
             <div class="col-md-4">
                  grade
-                <input value="@Model.OldMark" class="form-control" asp-for="@Model.OldMark"  />
+                <input value="@Model.MarkValue" class="form-control" asp-for="@Model.MarkValue"  />
             </div>
 
 

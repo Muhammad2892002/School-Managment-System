@@ -62,13 +62,13 @@ namespace API.Controllers
 
         }
         [HttpPost("AddMark")]
-        public IActionResult AddMark(EditMarkDTO markDTO) {
+        public IActionResult AddMark(MarkDTO markDTO) {
             Mark mark = new Mark();
             mark.StudentId = markDTO.StudentId;
             mark.SubjectId = markDTO.SubjectId;
             
            
-            mark.Mark1 = markDTO.OldMark;
+            mark.Mark1 = markDTO.MarkValue;
             _markRepository.Add(mark);
             return Ok("Success");
 

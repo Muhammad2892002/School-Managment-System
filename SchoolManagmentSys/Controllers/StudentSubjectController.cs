@@ -71,7 +71,7 @@ namespace API.Controllers
                      MarkValue = obj.Student.Marks
                             .Where(m => m.SubjectId == obj.SubjectId)
                             .Select(m => m.Mark1)
-                            .FirstOrDefault()??0
+                            .FirstOrDefault()
                  })
                       .ToList();
 

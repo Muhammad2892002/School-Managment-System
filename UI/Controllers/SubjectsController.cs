@@ -23,6 +23,12 @@ namespace UI.Controllers
 
 
             }
+            if (TempData["FailedMsg"] != null) {
+             ViewBag.FailedMsg = TempData["FailedMsg"];
+               
+                TempData.Clear();
+
+            }
         
 
             return View(jsonAsList);
