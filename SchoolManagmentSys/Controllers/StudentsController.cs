@@ -147,7 +147,7 @@ namespace API.Controllers
         }
 
    
-        public IActionResult Std([FromBody]StudentDTO studentDTO)
+        public IActionResult UpdateStd([FromBody]StudentDTO studentDTO)
         {
             List<string> errorMsg = new List<string>();
             var age = DateTime.Now.Year - studentDTO.BirthDate.Year;

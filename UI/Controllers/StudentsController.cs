@@ -29,10 +29,10 @@ namespace UI.Controllers
 
                       
                        
-                        TempData.Clear();
+                       
                     }
 
-
+                    TempData.Clear();
                     AllStudents =JsonConvert.DeserializeObject<List<StudentDTO>>(await response.Content.ReadAsStringAsync());
                     return View(AllStudents);
 
